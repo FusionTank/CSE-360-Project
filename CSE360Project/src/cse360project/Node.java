@@ -1,16 +1,42 @@
-// Anibal, feel free to add your Node class here. It is convention to have the first letter
-// of a class capitilized. 
+//This is going to be a node from a doubly linked list
 
-// Once you copy your code in here scroll down and put in a short description title where 
-// it has ghosted " Update Node.java" in the textbox.
+package cse360project;
 
-// Then hit commit. Once you do this, it'll save over the existing file. However, this is
-// the power of git and Github. Here on Github it will have a VERSION history saved. This 
-// allows us to go back in time and see what has changed within an individual class. We will
-// be able to see every change this way. i.e. version control. 
+public class Node {
+	
+	//start of the linked list
+	Node head;
+	
+	String act_name;
+	int duration;
+	
+	//Pointers. Parent points to node on the left, dependents points to node on the right
+	Node parent;
+	Node dependents;
+	
+	 public Node(){
+	        
+	        act_name = "";
+	        duration = 0;
+	        dependents = null;
+	        
+	    }
+	
+	//Adding an activity that doesn't have any dependency 
+	public Node(String activity, int duration) {
+		act_name = activity;
+		this.duration = duration;	
+		parent = null;
+		dependents = null;
+	}
+	
+	//When adding an activity that is dependent on another
+	public Node(String activity, int duration, node dependency) {
+		this.act_name = activity;
+		this.duration = duration;	
+		parent = dependency;
+		dependents = null;
+	}
+	
 
-// If we mess up code we can simply look at the history and pull an old file.
-
-// My bad
-// Forgot to put a an Update description below to help be more clear.
-// :)
+}
