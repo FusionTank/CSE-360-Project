@@ -3,24 +3,14 @@ package cse360project;
 
 import javax.swing.*;
 import java.awt.*;
-
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JFrame;
-import javax.swing.ImageIcon;
-import javax.swing.JTextField;
-
+import java.event.*; 
 
 public class NodeGUI extends JFrame {
     
     JLabel      durationLabel = new JLabel ( "Duration: ");
     JTextField  durationTextField = new JTextField (10);
     
-    JLabel       nameLabel = new JLabel ( "Name: ");
+    JLabel       nameLabel = new JLabel ( "Activty: ");
     JTextField   nameTextField = new JTextField (10);
     
     JLabel       dependentsLabel = new JLabel ( "Dependents: ");
@@ -29,6 +19,7 @@ public class NodeGUI extends JFrame {
     
  //Buttons
     JButton     addButton       = new JButton ("Add");
+    JButton     continueButton  = new JButton ("Continue");
     JButton     deleteButton    = new JButton ("Delete");
     JButton     displayButton   = new JButton ("Display all");
     JButton     exitButton      = new JButton ("Exit");
@@ -49,6 +40,7 @@ public class NodeGUI extends JFrame {
        flow1Panel.add (dependentsTextField);
        
        flow2Panel.add (addButton);
+       flow2Panel.add (continueButton); 
        flow2Panel.add (deleteButton);
        flow2Panel.add (displayButton);
        flow2Panel.add (exitButton);
