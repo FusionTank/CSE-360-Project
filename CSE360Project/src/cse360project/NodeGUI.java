@@ -3,7 +3,7 @@ package cse360project;
 
 import javax.swing.*;
 import java.awt.*;
-import java.event.*; 
+import java.awt.event.*; 
 
 public class NodeGUI extends JFrame {
     
