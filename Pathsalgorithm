@@ -64,7 +64,7 @@ public class AllPaths {
         }
         
         Graph G = new Graph(7);
-        // Graph G = new Graph(jnumberofnodes);
+        //Graph G = new Graph(jnumberofnodes);
         
         // if(dependency[i]==""){ // If the dependancy character array is empty, then there is no dependancy for that particular activity
             nothing
@@ -92,9 +92,9 @@ public class AllPaths {
         StdOut.println(G);
 
         StdOut.println();
-        StdOut.println("all simple paths between 0 and:" + numberofnodes);
-        AllPaths allpaths1 = new AllPaths(G, 0, 6);
-        //AllPaths allpaths1 = new AllPaths(G, 0, numberofnodes);
+        StdOut.println("all simple paths between 0 and:" + jnumberofnodes-1);
+        AllPaths allpaths1 = new AllPaths(G, 0, jnumberofnodes-1);
+        //AllPaths allpaths1 = new AllPaths(G, 0, jnumberofnodes-1);
         StdOut.println("# paths = " + allpaths1.numberOfPaths());
 
         StdOut.println();
