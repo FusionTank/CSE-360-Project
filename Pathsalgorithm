@@ -1,0 +1,107 @@
+public class AllPaths {
+    private boolean[] onPath;        // vertices in current path
+    private Stack<Integer> path;     // the current path
+    private int numberOfPaths;       // number of simple path
+    public int jnumberofnodes;       // *Jude - A variable to feed into the graph generate function to generate the required no.of nodes. This gets incremented every time the add button is clicked 
+    public char[] dependency; // An array of characters or strings to place dependencies
+    // show all simple paths from s to t - use DFS
+    public AllPaths(Graph G, int s, int t) {
+        onPath = new boolean[G.V()];
+        path   = new Stack<Integer>();
+        dfs(G, s, t);
+    }
+
+
+    // use DFS
+    private void dfs(Graph G, int v, int t) {
+
+        // add v to current path
+        path.push(v);
+        onPath[v] = true;
+
+        // found path from s to t
+        if (v == t) {
+            processCurrentPath();
+            numberOfPaths++;
+        }
+
+        // consider all neighbors that would continue path with repeating a node
+        else {
+            for (int w : G.adj(v)) {
+                if (!onPath[w])
+                    dfs(G, w, t);
+            }
+        }
+
+        // done exploring from v, so remove from path
+        path.pop();
+        onPath[v] = false;
+    }
+
+    // this implementation just prints the path to standard output
+    private void processCurrentPath() {
+        Stack<Integer> reverse = new Stack<Integer>();
+        for (int v : path)
+            reverse.push(v);
+        if (reverse.size() >= 1)
+            StdOut.print(reverse.pop());
+        while (!reverse.isEmpty())
+            StdOut.print("-" + reverse.pop());
+        StdOut.println();
+    }
+
+    // return number of simple paths between s and t
+    public int numberOfPaths() {
+        return numberOfPaths;
+    }
+
+
+    // test client
+    public static void main(String[] args) {
+        
+        for(int i =0;i<jnumberofnodes;i++){
+            strcpy(node[i].duration, durationfromgui);
+        }
+        
+        Graph G = new Graph(7);
+        // Graph G = new Graph(jnumberofnodes);
+        
+        // if(dependency[i]==""){ // If the dependancy character array is empty, then there is no dependancy for that particular activity
+            nothing
+        
+           else{
+                while dependency[i]!=NULL{
+                    G.addEdge(i,dependecy[i]);
+                    i++;
+                }
+           }
+        }
+        
+        // Basically what the above snippet does, is if it finds a dependancy in the character array for a particular activity, the while loop takes care of adding the edge of the activity to both dependencies from the character array to the activity.
+        
+        
+        G.addEdge(0, 1);
+        G.addEdge(0, 2);
+        G.addEdge(2, 3);
+        G.addEdge(3, 4);
+        G.addEdge(2, 5);
+        G.addEdge(1, 5);
+        G.addEdge(5, 4);
+        G.addEdge(3, 6);
+        G.addEdge(4, 6);
+        StdOut.println(G);
+
+        StdOut.println();
+        StdOut.println("all simple paths between 0 and:" + numberofnodes);
+        AllPaths allpaths1 = new AllPaths(G, 0, 6);
+        //AllPaths allpaths1 = new AllPaths(G, 0, numberofnodes);
+        StdOut.println("# paths = " + allpaths1.numberOfPaths());
+
+        StdOut.println();
+        StdOut.println("all simple paths between 1 and 5:");
+        AllPaths allpaths2 = new AllPaths(G, 1, 5);
+        StdOut.println("# paths = " + allpaths2.numberOfPaths());
+    }
+
+
+}
