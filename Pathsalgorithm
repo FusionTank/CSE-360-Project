@@ -61,16 +61,17 @@ public class AllPaths {
         
         Graph G = new Graph(jnumberofnodes);
         
-        for(int i=0;i<jnumberofnodes;i++){
+        for(int i=0;i<nodeList.size();i++){
+        for(int X=0;X<dependants.size();X++){  
            
-        if(dependents[i]==""){ // If the dependancy character array is empty, then there is no dependancy for that particular activity
+        if(nodeList[i].dependants[X]==""){ // If the dependancy character array is empty, then there is no dependancy for that particular activity
                                // nothing
             }
         
            else{
-                for(j=0;j<dependants.size()-1;j++){
-                    G.addEdge(i,dependecy[i][j]);
-                    j++;
+                for(X=0;X<dependants.size();X++){
+                    G.addEdge(nodeList[i],nodeList[i].dependants[X]);
+                    
                     }
                 }
            }
