@@ -59,23 +59,22 @@ public class AllPaths {
     // test client
     public static void main(String[] args) {
         
-        for(int i =0;i<jnumberofnodes;i++){
-            strcpy(node[i].duration, durationfromgui);
-        }
+        Graph G = new Graph(jnumberofnodes);
         
-        Graph G = new Graph(7);
-        //Graph G = new Graph(jnumberofnodes);
-        
-        // if(dependency[i]==""){ // If the dependancy character array is empty, then there is no dependancy for that particular activity
-            nothing
+        for(int i=0;i<jnumberofnodes;i++){
+           
+        if(dependents[i]==""){ // If the dependancy character array is empty, then there is no dependancy for that particular activity
+                               // nothing
+            }
         
            else{
-                while dependency[i]!=NULL{
-                    G.addEdge(i,dependecy[i]);
-                    i++;
+                for(j=0;j<dependants.size()-1;j++){
+                    G.addEdge(i,dependecy[i][j]);
+                    j++;
+                    }
                 }
            }
-        }
+        }}
         
         // Basically what the above snippet does, is if it finds a dependancy in the character array for a particular activity, the while loop takes care of adding the edge of the activity to both dependencies from the character array to the activity.
         
