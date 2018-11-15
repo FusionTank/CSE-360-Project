@@ -1,6 +1,6 @@
-package com.pathlist;
+package src.com.pathlist;
 
-import com.pathlist.Dijkstras.Graph;
+import src.com.pathlist.Dijkstras.Graph;
 import java.util.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -50,9 +50,10 @@ public class PathListGUI extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        clearButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Network Analyzer");
+        setTitle("Calculation");
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Activity Chart", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
@@ -111,7 +112,6 @@ public class PathListGUI extends javax.swing.JFrame {
                 btnAboutActionPerformed(evt);
             }
         });
-
 
         tblPaths.setBorder(new javax.swing.border.MatteBorder(null));
         tblPaths.setModel(new javax.swing.table.DefaultTableModel(
@@ -181,6 +181,13 @@ public class PathListGUI extends javax.swing.JFrame {
 
         jLabel6.setText("( 1 ~ Integer )");
 
+        clearButton.setText("Clear");
+        clearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -203,8 +210,11 @@ public class PathListGUI extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(clearButton))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(txtDuration, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -230,7 +240,9 @@ public class PathListGUI extends javax.swing.JFrame {
                     .addComponent(txtDuration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(18, 18, 18)
-                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(clearButton))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -288,7 +300,7 @@ public class PathListGUI extends javax.swing.JFrame {
 
     private void btnAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(rootPane, "This program finds all the paths in a network.");
+        JOptionPane.showMessageDialog(rootPane, "This program finds all the paths in a network.\n"+"Group 2\nAnibal\nBenedetto Hibler\nJude\nVasanti");
     }//GEN-LAST:event_btnAboutActionPerformed
 
     private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelpActionPerformed
@@ -362,26 +374,15 @@ public class PathListGUI extends javax.swing.JFrame {
             pathTableModel.addRow(new Object[]{l.toString(), total.toString()});
         }
 
-        /*int total=0;
-        String path="";
-        String s=actList.get(0).getActName();
-        path=actList.get(0).getActName();
-        total=actList.get(0).getActDuration();
-        for(int i=1;i<actList.size();i++)
-        {   
-             if(actList.get(i).getActDependencies().contains(s)){
-                 path=path+">"+actList.get(i).getActName();
-                 s=actList.get(i).getActName();
-                 total=total+actList.get(i).getActDuration();
-            }   
-        }
-        pathTableModel.addRow(new Object[]{path,total});*/
-        Boolean x = g.disconnects();
-        if(x == true) {
-            JOptionPane.showMessageDialog(rootPane, "Error, not all activities are connected");
-
-        }
+      
     }//GEN-LAST:event_btnRunActionPerformed
+
+    private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
+        activityTableModel.setRowCount(0);
+        pathTableModel.setRowCount(0);
+        
+        
+    }//GEN-LAST:event_clearButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -428,6 +429,7 @@ public class PathListGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnHelp;
     private javax.swing.JButton btnRun;
+    private javax.swing.JButton clearButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
